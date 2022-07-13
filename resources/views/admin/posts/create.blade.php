@@ -17,7 +17,7 @@
 
     <form action="{{ route('admin.posts.store') }}" method="POST">
         @csrf
-
+        {{-- title --}}
         <div class="mb-3">
           <label for="title" class="form-label">Titolo post</label>
           <input type="text" value="{{ old('title') }}"
@@ -29,6 +29,7 @@
           @enderror
         </div>
 
+        {{-- image --}}
         <div class="mb-3">
           <label for="image" class="form-label">Link immagine</label>
           <input type="text" value="{{ old('image') }}"
@@ -40,8 +41,8 @@
           @enderror
         </div>
 
+        {{-- category --}}
         <div class="mb-3">
-
             <select class="form-select p-2" name="category_id">
                 <option value="">Scegli una categoria</option>
                 @foreach ($categories as $category)
@@ -50,11 +51,10 @@
                  {{ $category->id == old('category_id')? 'selected': '' }}
                 value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
-
             </select>
-
         </div>
 
+        {{-- author --}}
         <div class="mb-3">
           <label for="author" class="form-label">Autore</label>
           <input type="text" value="{{ old('author') }}"
@@ -66,7 +66,8 @@
           @enderror
         </div>
 
-        <div class="mb-3">
+        {{-- reading-time --}}
+        <div class="mb-4">
             <label for="reading_time" class="form-label">Tempo di lettura</label>
             <input type="text" value="{{ old('reading_time') }}"
             class="form-control @error('reading_time') is-invalid @enderror"
@@ -77,6 +78,23 @@
             @enderror
         </div>
 
+        {{-- tags --}}
+        <div class="mb-3">
+            <h6 class="mb-3">Scegli i tag per questo post:</h6>
+            @foreach ($tags as $tag)
+
+                <input @if (in_array($tag->id, old('tags', []))) checked @endif
+                value="{{ $tag->id }}" type="checkbox" name="tags[]" id="tag{{ $loop->iteration }}">
+                <label for="tag{{ $loop->iteration }}" class="mr-3">{{ $tag->name }}</label>
+            @endforeach
+
+            @error('reading_time')
+                <p>{{ $message }}</p>
+            @enderror
+        </div>
+
+
+        {{-- content --}}
         <div class="mb-3">
             <label for="content" class="form-label">Tetsto</label>
             <textarea
