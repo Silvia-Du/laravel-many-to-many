@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid px-5 mx-5">
 
     <h1 class="my-5">Tutti i tuoi post</h1>
 
@@ -12,13 +12,14 @@
     @endif
 
     <table class="table">
-        <thead class="table-light">
+        <thead class="table-light text-left">
           <tr>
             <th scope="col">id</th>
             <th scope="col">Title</th>
             <th scope="col">Reading time</th>
             <th scope="col">Autore</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Tags</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -31,8 +32,15 @@
                 <td>{{ $post->author }}</td>
                 <td>{{ $post->category? $post->category->name: '-' }}</td>
                 <td>
+                    @forelse ($post->tags as $tag)
+                    <h5 class="d-inline"><span class="badge badge-success">{{ $tag->name }}</span></h5>
+                    @empty
+                        -
+                    @endforelse
+                </td>
+                <td>
                     <a type="button" class="btn btn-info" href="{{ route('admin.posts.show', $post) }}">View more</a>
-                    <a type="button" class="btn btn-light" href="{{ route('admin.posts.edit', $post) }}">edit</a>
+                    <a type="button" class="btn btn-primary" href="{{ route('admin.posts.edit', $post) }}">edit</a>
 
                     <form class="d-inline"
                     action="{{ route('admin.posts.destroy', $post) }}"
@@ -40,7 +48,7 @@
                     method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-dark">Elimina</button>
+                        <button type="submit" class="btn btn-danger">Elimina</button>
                     </form>
 
                 </td>
@@ -51,6 +59,7 @@
       </table>
       {{ $posts->links() }}
     </div>
+    {{-- MAIN BOTTOM CATEGORY SELECTION --}}
     <div class="category-section my-5 debug">
         <div class="container py-5">
             <h2 class="mb-4">Scegli per categoria</h2>
