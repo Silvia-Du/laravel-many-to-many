@@ -83,6 +83,21 @@
             @enderror
         </div>
 
+        {{-- tags --}}
+        <div class="mb-3">
+            <h6 class="mb-3">Scegli i tag per questo post:</h6>
+
+            @foreach ($tags as $tag)
+                <input
+                @if (!$errors->any() && $post->tags->contains($tag->id)) checked
+                @elseif ($errors->any && in_array($tag->id, old('tags', []))) checked
+                @endif
+                value="{{ $tag->id }}" type="checkbox" name="tags[]" id="tag{{ $loop->iteration }}">
+
+                <label for="tag{{ $loop->iteration }}" class="mr-3">{{ $tag->name }}</label>
+            @endforeach
+        </div>
+
         {{-- content --}}
         <div class="mb-3">
             <label for="content" class="form-label">Tetsto</label>

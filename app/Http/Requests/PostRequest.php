@@ -27,7 +27,7 @@ class PostRequest extends FormRequest
             'title'=> 'required | min:3 | max:50',
             'content'=> 'required | min:50',
             'image'=> 'required | min:5 | max:255',
-            'reading_time'=> 'required | min:1 | max:60 | numeric',
+            'reading_time'=> 'required | min:1 | max:60',
             'author'=> 'required | min:3 | max:50',
         ];
     }
