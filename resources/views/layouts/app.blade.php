@@ -9,9 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -23,7 +20,7 @@
     {{-- jQuery --}}
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     {{-- JS --}}
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -44,8 +41,7 @@
                     Crea un nuovo Post
                 </a>
 
-
-                {{-- <div class="nav-item dropdown">
+                 <div class="nav-item dropdown">
                     <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Dropdown
                     </a>
@@ -56,7 +52,7 @@
                       <a class="dropdown-item" href="#">Tutti i tags</a>
                       <a class="dropdown-item" href="#">Crea nuovi tags</a>
                     </div>
-                </div> --}}
+                </div>
 
                 @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
