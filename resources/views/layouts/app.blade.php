@@ -43,9 +43,6 @@
                 <a class="navbar-brand" href="{{ route('admin.posts.create') }}">
                     Crea un nuovo Post
                 </a>
-                <a class="navbar-brand" href="{{ route('admin.tags.index') }}">
-                    Tutti i tag
-                </a>
 
 
                 {{-- <div class="nav-item dropdown">
