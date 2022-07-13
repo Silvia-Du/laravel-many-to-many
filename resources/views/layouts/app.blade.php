@@ -34,16 +34,10 @@
                     Pagina Pubblica
                 </a>
                 @auth()
-                <a class="navbar-brand" href="{{ route('admin.posts.index') }}">
-                    Tutti i post
-                </a>
-                <a class="navbar-brand" href="{{ route('admin.posts.create') }}">
-                    Crea un nuovo Post
-                </a>
 
                  <div class="nav-item dropdown">
                     <a class="navbar-brand dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Dropdown
+                      Admin link
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="{{ route('admin.posts.index') }}">Tutti i post</a>
