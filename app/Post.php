@@ -8,6 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
+
     protected $fillable =[
         'title',
         'slug',
@@ -32,9 +43,5 @@ class Post extends Model
             $counter ++;
         }
         return $slug;
-    }
-
-    public function category(){
-        return $this->belongsTo('App\Category');
     }
 }
