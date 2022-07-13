@@ -19,6 +19,15 @@
                 <p>Categoria: {{ $post->category->name }}</p>
             @endif
 
+            @if($post->tags)
+                <h4>I tag assegnati a questo post:</h4>
+                <div class="mb-4">
+                    @foreach ($post->tags as $tag)
+                        <h4 class="d-inline mb-4"><span class="badge badge-success">{{ $tag->name }}</span></h4>
+                    @endforeach
+                </div>
+            @endif
+
 
             <h5>Contenuto:</h5>
             <p>{{ $post->content }}</p>
